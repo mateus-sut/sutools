@@ -72,7 +72,7 @@ export default {
         password.dispatchEvent(new Event("input", { bubbles: true }))
       }
       if (confirmPassword) {
-        confirmPassword.value = data.password
+        confirmPassword.value = data.confirmPassword
         confirmPassword.dispatchEvent(new Event("input", { bubbles: true }))
       }
       if (numberAddress) {
