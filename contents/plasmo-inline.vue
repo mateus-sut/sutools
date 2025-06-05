@@ -4,21 +4,19 @@ import type {
   PlasmoGetInlineAnchor,
   PlasmoMountShadowHost
 } from "plasmo"
-
 import { Storage } from "@plasmohq/storage"
+import { generateCpf } from "../utils/cpf"
 
 export const config: PlasmoCSConfig = {
   matches: ["*://*.cloudfront.net/*"]
 }
 
 const getInlineAnchor: PlasmoGetInlineAnchor = () =>
-  document.querySelector(".register-title-inline")
+document.querySelector(".register-title")
 
 const mountShadowHost: PlasmoMountShadowHost = ({ anchor, shadowHost }) => {
   anchor!.element!.insertBefore(shadowHost!, anchor!.element!.firstChild)
 }
-
-
 
 export default {
   plasmo: {
@@ -46,6 +44,7 @@ export default {
       const phone = document?.getElementById("form.telefone") as HTMLInputElement
       const password = document?.getElementById("form.senha") as HTMLInputElement
       const confirmPassword = document?.getElementById("form.confirmar_senha") as HTMLInputElement
+      const cpf = document?.getElementById("form.cpf") as HTMLInputElement
 
       if (cep) {
         cep.value = data.cep
@@ -78,6 +77,12 @@ export default {
       if (numberAddress) {
         numberAddress.value = data.numberAddress
         numberAddress.dispatchEvent(new Event("input", { bubbles: true }))
+      }
+      if (cpf) {
+        const cpfGenerated = await generateCpf()
+        console.log(cpfGenerated)
+        cpf.value = cpfGenerated
+        cpf.dispatchEvent(new Event("input", { bubbles: true }))
       }
     }
   }

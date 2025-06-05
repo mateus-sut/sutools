@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@plasmohq/storage": "^1.15.0",
+    "lucide-vue-next": "^0.513.0",
     "plasmo": "0.90.5",
-    "vue": "3.4.15"
+    "vue": "3.4.15",
+    "vue-router": "^4.5.1"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "4.1.1",
