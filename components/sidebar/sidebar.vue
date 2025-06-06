@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { Wand, Settings, User, FileText, Wrench } from 'lucide-vue-next'
+import { Wand, User, Wrench } from 'lucide-vue-next'
 import SidebarItem from './sidebar-item.vue'
 import type { LucideIcon } from '~node_modules/lucide-vue-next/dist/lucide-vue-next'
 
@@ -31,19 +31,9 @@ const navigationItems: NavigationItem[] = [
         to: '/'
     },
     {
-        icon: FileText,
+        icon: User,
         text: 'Usuários cadastrados',
         to: '/users'
     },
-    {
-        icon: User,
-        text: 'Profile',
-        to: '/profile'
-    },
-    {
-        icon: Settings,
-        text: 'Settings',
-        to: '/settings'
-    }
 ]
 </script>

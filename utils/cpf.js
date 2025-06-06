@@ -1,4 +1,4 @@
-export async function generateCpf() {
+export function generateCpf() {
     const rnd = (n) => Math.round(Math.random() * n);
     const mod = (base, div) => Math.round(base - Math.floor(base / div) * div)
     const n = Array(9).fill('').map(() => rnd(9));
@@ -11,5 +11,5 @@ export async function generateCpf() {
     d2 = 11 - mod(d2, 11);
     if (d2 >= 10) d2 = 0;
 
-    return Number(`${n.join('')}${d1}${d2}`)
+    return `${n.join('')}${d1}${d2}`
 }

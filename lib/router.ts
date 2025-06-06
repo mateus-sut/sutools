@@ -12,16 +12,6 @@ const routes: RouteRecordRaw[] = [
         name: 'Users',
         component: () => import('../components/users/users.vue')
     },
-    {
-        path: '/profile',
-        name: 'Profile',
-        component: () => import('../components/users/users.vue')
-    },
-    {
-        path: '/settings',
-        name: 'Settings',
-        component: () => import('../components/Settings.vue')
-    }
 ]
 
 export const router = createRouter({

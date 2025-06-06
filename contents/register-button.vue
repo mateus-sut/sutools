@@ -12,7 +12,7 @@ export const config: PlasmoCSConfig = {
 }
 
 const getInlineAnchor: PlasmoGetInlineAnchor = () =>
-document.querySelector(".register-title")
+  document.querySelector(".register-title")
 
 const mountShadowHost: PlasmoMountShadowHost = ({ anchor, shadowHost }) => {
   anchor!.element!.insertBefore(shadowHost!, anchor!.element!.firstChild)
@@ -28,8 +28,8 @@ export default {
       count: 0
     }
   },
-  setup() {},
-  mounted() {},
+  setup() { },
+  mounted() { },
   methods: {
     async autoFillForm() {
       const storage = new Storage()
@@ -44,7 +44,8 @@ export default {
       const phone = document?.getElementById("form.telefone") as HTMLInputElement
       const password = document?.getElementById("form.senha") as HTMLInputElement
       const confirmPassword = document?.getElementById("form.confirmar_senha") as HTMLInputElement
-      const cpf = document?.getElementById("form.cpf") as HTMLInputElement
+      const cpfInputs = document?.querySelectorAll('input[name="form.cpf"]');
+      const cpf = cpfInputs[1] as HTMLInputElement;
 
       if (cep) {
         cep.value = data.cep
@@ -56,7 +57,7 @@ export default {
       }
       if (birthDate) {
         birthDate.value = data.birthDate
-        birthDate.dispatchEvent(new Event("input", { bubbles: true }))  
+        birthDate.dispatchEvent(new Event("input", { bubbles: true }))
       }
       if (email) {
         email.value = data.email
@@ -79,10 +80,9 @@ export default {
         numberAddress.dispatchEvent(new Event("input", { bubbles: true }))
       }
       if (cpf) {
-        const cpfGenerated = await generateCpf()
-        console.log(cpfGenerated)
-        cpf.value = cpfGenerated
-        cpf.dispatchEvent(new Event("input", { bubbles: true }))
+        const cpfGenerated = generateCpf();
+        cpf.value = cpfGenerated;
+        cpf.dispatchEvent(new Event("input", { bubbles: true }));
       }
     }
   }
